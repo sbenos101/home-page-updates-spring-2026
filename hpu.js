@@ -8,11 +8,15 @@
         { "name": "Makita DUR190URT8 18V Cutter", "img": "/media/catalog/product/m/a/makita-dur190urt8-18v-liion-lxt-brushless-brush-cutter-cw-5ah-battery-charger-10.jpg", "href": "/makita-dur190urt8-18v-liion-lxt-brushless-brush-cutter-cw-5ah-battery-charger", "basePrice": 120.43, "springDeal": true },
         { "name": "Makita DLM330RT 18V Lawn Mower", "img": "/media/catalog/product/d/l/dlm330_d1ck.jpg", "href": "/makita-dlm330rt-18v-lxt-lawn-mower-with-5ah-battery-rapid-charger", "basePrice": 160.27, "newProduct": true },
         { "name": "Makita DHP490Z 18V Combi Drill", "img": "/media/catalog/product/m/a/makita-dhp490z-18v-lxt-brushless-combi-drill-body-only.jpg", "href": "/makita-dhp490z-18v-lxt-brushless-combi-drill-body-only", "basePrice": 65.00, "fromPrice": true, "newProduct": true },
-        { "name": "Makita DGA452Z 18V Angle Grinder", "img": "/media/catalog/product/m/a/makita-dga452z-18v-liion-grinder-body-only.jpg", "href": "/makita-dga452z-18v-liion-grinder-body-only", "basePrice": 55.02, "fromPrice": true, "springDeal": true },
+        { "name": "Makita DGA452Z 18V Angle Grinder", "img": "/media/catalog/product/m/a/makita-dga452z-18v-liion-grinder-body-only.jpg", "href": "/makita-dga452z-18v-liion-grinder-body-only", "basePrice": 55.02, "springDeal": true },
         { "name": "Makita DUP181Z 18V Pruning Shears", "img": "/media/catalog/product/b/5/b5200739-makita-dup181z-18v-lxt-brushless-pruning-shears_a1.jpg", "href": "/makita-dup181z-18v-lxt-brushless-pruning-shears-body-only", "basePrice": 111.77, "newProduct": true },
-        { "name": "Makita BL1890 18V 9.0Ah Battery", "img": "/media/catalog/product/m/a/makita-bl1890-lxt-18v-90ah-liion-battery.jpg?width=700&height=700&store=default&image-type=image", "href": "/makita-bl1890-lxt-18v-90ah-liion-battery", "basePrice": 84.00, "springDeal": true },
-        { "name": "Makita DUH506RT 18V Hedge Trimmer", "img": "/media/catalog/product/m/a/makita-duh506rt-18v-lxt-brushless-hedge-trimmer-cw-5ah-battery-rapid-charger-lifestyle-2.jpg", "href": "/makita-duh506rt-18v-lxt-brushless-hedge-trimmer-cw-5ah-battery-rapid-charger", "basePrice": 134.23, "fromPrice": true, "newProduct": true },
+        { "name": "Makita DLX2549TJ 18V Brushless Twin Kit", "img": "/media/catalog/product/m/a/makita-dlx2549tj-lxt-brushless-twin-kit-inc-2-x-5ah-batteries-and-dc18rc-charger-lifestyle_1.jpg", "href": "/makita-dlx2549tj-lxt-brushless-twin-kit-inc-2-x-5ah-batteries-dc18rc-charger", "basePrice": 312.29, "springDeal": true },
+        { "name": "Makita BL1890 18V 9.0Ah Battery", "img": "/media/catalog/product/m/a/makita-bl1890-lxt-18v-90ah-liion-battery.jpg", "href": "/makita-bl1890-lxt-18v-90ah-liion-battery", "basePrice": 84.00, "springDeal": true },
+        { "name": "Makita DUH506RT 18V Hedge Trimmer", "img": "/media/catalog/product/m/a/makita-duh506rt-18v-lxt-brushless-hedge-trimmer-cw-5ah-battery-rapid-charger-lifestyle-2.jpg", "href": "/makita-duh506rt-18v-lxt-brushless-hedge-trimmer-cw-5ah-battery-rapid-charger", "basePrice": 134.23, "newProduct": true },
+        { "name": "Makita BL1850B 18V 5Ah Battery", "img": "/media/catalog/product/m/a/makita-bl1850b-18v-5ah-battery-lifestyle.jpg", "href": "/makita-bl1850b-5ah-battery", "basePrice": 49.50, "springDeal": true },
         { "name": "Makita UR3000/2 240V Line Trimmer", "img": "/media/catalog/product/m/a/makita-ur3000-2-240v-electric-linetrimmer-a1.jpg", "href": "/makita-ur30002-240v-electric-linetrimmer", "basePrice": 41.95, "springDeal": true },
+        { "name": "Makita BL1860B 18V 6Ah Battery", "img": "/media/catalog/product/m/a/makita-bl1860b-18v-6ah-battery-lifestyle_1.jpg", "href": "/makita-bl1860b-1974224-18v-6ah-battery", "basePrice": 64.55, "springDeal": true },
+        { "name": "Makita BKP180Z 18V Planer", "img": "/media/catalog/product/m/a/makita-dkp180z-18v-lxt-cordless-planer-body-only-lifestyle_1.jpg", "href": "/makita-bkp180z-18-volt-planer-body-only", "basePrice": 106.10, "springDeal": true },
         ]
     }
   };
@@ -80,7 +84,7 @@
 
   // Makita product carousel initialization
   function initializeMakitaCarousel() {
-    let products = ["products"];
+    let products = Object.keys(productsMap);
     const carousels = [];
     const prevButtons = [];
     const nextButtons = [];
@@ -140,11 +144,10 @@
           </div>
         ` : '';
         
-        const fromText = product.fromPrice ? 'From ' : '';
         const priceHtml = `
           <div x-data="{ basePrice: ${product.basePrice} }">
             <p class="mx-auto text-center text-sm">
-              ${fromText}Only £<span x-text="(basePrice * ($store.vatSwitch.state ? 1.20 : 1)).toFixed(2)"></span> 
+              Only £<span x-text="(basePrice * ($store.vatSwitch.state ? 1.20 : 1)).toFixed(2)"></span> 
               <span x-text="$store.vatSwitch.state ? 'Inc VAT' : 'Ex VAT'"></span>
             </p>
           </div>
